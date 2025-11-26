@@ -1,30 +1,25 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:apkrover/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Dashboard shows AppBar, Drawer icon and MQTT card', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const RoverApp());
+    await tester.pumpAndSettle();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // AppBar ada
+    expect(find.byType(AppBar), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Title sesuai
+    expect(find.text('R.O.V.E.R Monitoring'), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Drawer (hamburger) — by Tooltip
+    expect(find.byTooltip('Open navigation menu'), findsOneWidget);
+
+    // Salah satu IoTCard (MQTT) muncul
+    expect(find.text('MQTT'), findsOneWidget);
+    expect(find.text('Connected'), findsOneWidget);
   });
 }

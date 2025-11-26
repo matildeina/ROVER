@@ -45,60 +45,43 @@ class IoTDrawer extends StatelessWidget {
               ],
             ),
           ),
+
+          // MENU ITEMS ====================================================
           _drawerItem(
             Icons.wifi,
             "MQTT Status",
             context,
-            const MqttStatusPage(),
+            MqttStatusPage(), // tidak pakai const
           ),
           _drawerItem(
             Icons.smart_toy,
             "Status Rover",
             context,
-            const RoverStatusPage(),
+            RoverStatusPage(),
           ),
-          _drawerItem(
-            Icons.route,
-            "Jarak Ditempuh",
-            context,
-            const JarakPage(),
-          ),
-          _drawerItem(Icons.speed, "Kecepatan", context, const KecepatanPage()),
-          _drawerItem(
-            Icons.navigation,
-            "Arah Gerak",
-            context,
-            const ArahPage(),
-          ),
+          _drawerItem(Icons.route, "Jarak Ditempuh", context, JarakPage()),
+          _drawerItem(Icons.speed, "Kecepatan", context, KecepatanPage()),
+          _drawerItem(Icons.navigation, "Arah Gerak", context, ArahPage()),
           _drawerItem(
             Icons.battery_full,
             "Status Baterai",
             context,
-            const BateraiPage(),
+            BateraiPage(),
           ),
-          _drawerItem(
-            Icons.camera_alt,
-            "Live Camera",
-            context,
-            const CameraPage(),
-          ),
-          _drawerItem(
-            Icons.sensors,
-            "LIDAR Mini-Map",
-            context,
-            const LidarPage(),
-          ),
+          _drawerItem(Icons.camera_alt, "Live Camera", context, CameraPage()),
+          _drawerItem(Icons.sensors, "LIDAR Mini-Map", context, LidarPage()),
           _drawerItem(
             Icons.info_outline,
             "About R.O.V.E.R",
             context,
-            const AboutPage(),
+            AboutPage(),
           ),
         ],
       ),
     );
   }
 
+  // Reusable Drawer Item =================================================
   static ListTile _drawerItem(
     IconData icon,
     String title,

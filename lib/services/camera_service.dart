@@ -15,8 +15,7 @@ class CameraStream extends StatefulWidget {
   final String url;
   final String title;
 
-  const CameraStream({Key? key, required this.url, required this.title})
-    : super(key: key);
+  const CameraStream({super.key, required this.url, required this.title});
 
   @override
   State<CameraStream> createState() => _CameraStreamState();
